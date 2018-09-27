@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record model="ir.ui.view" id="inpatient_form_view">
+            <field name="name">inpatient.form</field>
+            <field name="model">hospitalmanagementsystem.inpatient</field>
+            <field name="arch" type="xml">
+                <form string="inpatient Form">
+                    <sheet>
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" string="OutPatient Name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+
+                                <field name="doctor_head"/>
+                                <field name="bed_id"/>
+                                <field name="admission_type_id"/>
+
+                            </group>
+                            <group >
+                                <field name="building_id"/>
+                                <field name="ward_id"/>
+                                <field name="discharge_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="inpatient_tree_view">
+            <field name="name">inpatient.tree</field>
+            <field name="model">hospitalmanagementsystem.inpatient</field>
+            <field name="arch" type="xml">
+                <tree string="In Patient Tree">
+                    <field name="name"/>
+                    <field name="doctor_head"/>
+                    <field name="building_id"/>
+                    <field name="admission_type_id"/>
+                    <field name="discharge_date"/>
+                </tree>
+            </field>
+        </record>
+
+    
+        <record model="ir.actions.act_window" id="inpatient_list_action">
+            <field name="name">In Patients</field>
+            <field name="res_model">hospitalmanagementsystem.inpatient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+       
+        </record>
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_hospital_management_system_menu" name="Hospital Management System"/>
+      
+        <menuitem id="patient_menu" name="Patients" parent="main_hospital_management_system_menu"/>
+       
+        <menuitem id="inpatient_menu" name="In Patients" parent="patient_menu" action="inpatient_list_action"/>
+       
+
+
+</odoo>

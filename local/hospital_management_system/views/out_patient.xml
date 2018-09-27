@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record model="ir.ui.view" id="outpatient_form_view">
+            <field name="name">outpatient.form</field>
+            <field name="model">hospitalmanagementsystem.outpatient</field>
+            <field name="arch" type="xml">
+                <form string="outpatient Form">
+                    <sheet>
+
+                        <div>
+                            <span>
+                            <field name="image" widget='image' class="oe_avatar"/>
+                             <h1>
+                                <field name="partner_id" string="Patient Name" />
+                            </h1>
+                        </span>
+                        </div>
+
+                        <!-- <div class="oe_title">
+                            <img src='/hospital_management_system/static/description/images/upload.png' style="width:100%"/>
+                            <h1>
+                                <field name="partner_id" string="Patient Name" />
+                            </h1>
+                        </div> -->
+                        <group>
+                            <group>
+
+                                <field name="birth_date"/>
+                                <field name="blood_type"/>
+                                <field name="doctor_name"/>
+                                <field name="gender"/>
+                            </group>
+
+                            <group>
+
+                                <field name="responsible_id"/>
+                                <field name="maritial_id"/>
+                                <field name="description_id"/>
+                            </group>
+                    </group>
+                        <notebook>
+
+                            <page string="Personal Information">
+                                <field name="out_pat_lines">
+                                    <tree string="Out Patient Lines">
+                                       <!--  <field name=" name"/> -->
+                                       <field name="contact_no"/>
+                                       <field name="name"/>
+                                       <field name="address"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+                            <page string="Medicines">
+                                <field name="description_id"/>
+                            </page>
+
+                            <page string="Lab Test">
+                                <field name="description_id"/>
+                            </page>
+
+                            <page string="Surgeries">
+                                <field name="description_id"/>
+                            </page>
+
+                            <page string="Evaluation">
+                                <field name="description_id"/>
+                            </page>
+
+
+
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="outpatient_tree_view">
+            <field name="name">outpatient.tree</field>
+            <field name="model">hospitalmanagementsystem.outpatient</field>
+            <field name="arch" type="xml">
+                <tree string="Out Patient Tree">
+                    <field name="partner_id"/>
+                    <field name="birth_date"/>
+                    <field name="blood_type"/>
+                    <field name="doctor_name"/>
+                    <field name="gender"/>
+                    <!-- <field name="responsible_id"/> -->
+                </tree>
+            </field>
+            </record>
+
+    
+        <record model="ir.actions.act_window" id="outpatient_list_action">
+            <field name="name">OutPatients</field>
+            <field name="res_model">hospitalmanagementsystem.outpatient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+       
+        </record>
+
+     
+        
+       
+        <menuitem id="outpatient_menu" name="Out Patients" parent="patient_menu" action="outpatient_list_action"/>
+       
+
+
+</odoo>

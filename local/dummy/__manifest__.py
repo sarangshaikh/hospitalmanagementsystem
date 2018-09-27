@@ -1,1 +1,1 @@
-{"name": "dummy", "installable": False}
+{"name": "dummy", "installable": True}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record model="ir.ui.view" id="prescription_form_view">
+            <field name="name">prescription.form</field>
+            <field name="model">hospitalmanagementsystem.prescription</field>
+            <field name="arch" type="xml">
+                <form string="prescription Form">
+                    <sheet>
+                        <group string="Group 1">
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                          <!--   <field name="doctor_in_operation"/> -->
+                        </group>
+                       
+                    <!--    <group string="Group 2">
+                            <field name="building_id"/>
+                            <field name="ward_id"/>
+                            <field name="bed_id"/>
+                            <field name="discharge_date"/>
+                       </group> -->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="prescription_tree_view">
+            <field name="name">prescription.tree</field>
+            <field name="model">hospitalmanagementsystem.prescription</field>
+            <field name="arch" type="xml">
+                <tree string="In Patient Tree">
+                    <field name="name"/>
+                  
+                </tree>
+            </field>
+            </record>
+
+    
+        <record model="ir.actions.act_window" id="prescription_list_action">
+            <field name="name">Prescription</field>
+            <field name="res_model">hospitalmanagementsystem.prescription</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+       
+        </record>
+
+        <!--  top level menu: no parent -->
+        <menuitem id="main_hospital_management_system_menu" name="Hospital Management System"/>
+      
+        <menuitem id="doctor_appointment_menu" name="Doctor and Appointments" parent="main_hospital_management_system_menu"/>
+       
+        <menuitem id="prescription_menu" name="Prescription" parent="doctor_appointment_menu" action="prescription_list_action"/>
+   
+
+
+</odoo>

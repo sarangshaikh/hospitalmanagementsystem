@@ -7,14 +7,13 @@
                 <form string="inpatient Form">
                     <sheet>
 
-                        <div class="oe_title">
+                        <div class="oe_title" string="Patient Name">
                             <h1>
-                                <field name="name" string="OutPatient Name" />
+                                <field name="name" string="Patient Name" />
                             </h1>
                         </div>
                         <group>
                             <group>
-
                                 <field name="doctor_head"/>
                                 <field name="bed_id"/>
                                 <field name="admission_type_id"/>

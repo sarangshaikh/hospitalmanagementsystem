@@ -4,9 +4,9 @@ from odoo import models, fields
 class InPatient(models.Model):
     _name = 'hospitalmanagementsystem.inpatient'
 
-    name = fields.Char(string="Patient Id")
+    
     admission_type_id=fields.Char(string="Admission Type")
-
+    name=fields.Many2one('hospitalmanagementsystem.outpatient',string="Patient Name")
     # doctor_in_operation=fields.Many2many('res.user',string="Doctor in Operation")
     doctor_head=fields.Many2one('res.user',string="Doctor Head")
     building_id=fields.Char(string="Building")

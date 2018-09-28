@@ -5,21 +5,41 @@
             <field name="model">hospitalmanagementsystem.prescription</field>
             <field name="arch" type="xml">
                 <form string="prescription Form">
-                    <sheet>
-                        <group string="Group 1">
-                            <field name="name"/>
+                    <sheet> 
+                     <div class="oe_title">
+                        <h1>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                        </h1>
+
+                    </div>
+                    <group>
+                        <group>
                             <field name="partner_id"/>
-                          <!--   <field name="doctor_in_operation"/> -->
+                            <field name="doctor_id"/>
                         </group>
-                       
-                    <!--    <group string="Group 2">
-                            <field name="building_id"/>
-                            <field name="ward_id"/>
-                            <field name="bed_id"/>
-                            <field name="discharge_date"/>
-                       </group> -->
-                    </sheet>
-                </form>
+
+                        <group>
+                            <field name="pharmacy_id"/>
+                            <field name="prescription_date"/>
+                        </group> 
+                    </group>
+                    <notebook>
+                        <page string="Prescription Lines">
+                          <field name="prescriptionlines_id">
+                            <tree>
+                              
+                                <field name="medicine"/>
+                                <field name="dose"/>
+                                <field name="units"/>
+                                <field name="days"/>
+                                <field name="Period"/>
+                            </field>
+                        </tree>
+                    </page>
+
+                </notebook>
+                </sheet>
+            </form>
             </field>
         </record>
 
@@ -32,6 +52,16 @@
                   
                 </tree>
             </field>
+            </record>
+            
+
+            <record id="prescription_seq" model="ir.sequence">
+                <field name="name">prescription</field>
+                <field name="code">hospitalmanagementsystem.prescription</field>
+                <field name="prefix">PR#</field>
+                <field name="padding">3</field>
+      <!--           <field name="number_increment">1</field> -->
+                <field name="number_next">000</field>
             </record>
 
     

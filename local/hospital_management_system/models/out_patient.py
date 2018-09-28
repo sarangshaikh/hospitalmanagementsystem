@@ -10,16 +10,17 @@ class OutPatient(models.Model):
     image = fields.Binary("Image", attachment=True,
       help="This field holds the image used as avatar for \
       this contact, limited to 1024x1024px",)
-
-    partner_id=fields.Many2one('res.partner',string="Patient Name")
+    name=fields.Many2one('res.partner',string="Patient Name")    
 
     birth_date=fields.Date(string="Date Of Birth")
     blood_type=fields.Char(string="Blood Type")
-    doctor_name=fields.Many2one('res.user',string="Doctor Name")
     gender=fields.Char()
     responsible_id=fields.Char(string="Responsible")
     maritial_id=fields.Char(string="Martial Status")
-    
+    rh_id=fields.Char(string="Rh")
+    doctor_name=fields.Many2one('res.user',string="Doctor Name")
+
+
     description_id=fields.Char(string="Description")
     
     

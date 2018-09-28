@@ -7,12 +7,30 @@
             <field name="arch" type="xml">
                 <form string="doctor Form">
                     <sheet>
-                        <group string="Group 1">
-                            <field name="name"/>
-                            <field name="partner_id"/>
-      
+                        <div>
+                            <field name="doc_image" widget='image' class="oe_avatar"/>
+                             
+                             <h1>
+                                <field name="name" string="Doctor Name" />
+
+                            </h1>
+                            <field name="degree"/>
+                            
+                        </div>
+
+                        <group>
+
+                          <group>
+                            <field name="graduation_institute"/>
+                            <field name="licence_id"/>
                         </group>
-                       
+                        <group>
+                            <field name="consultancy_type"/>
+                            <field name="consultancy_charge"/>
+                        </group>
+
+                    </group>
+
                       <!--  <group string="Group 2">
                             <field name="building_id"/>
                             <field name="ward_id"/>

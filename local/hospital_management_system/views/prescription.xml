@@ -27,14 +27,15 @@
                         <page string="Prescription Lines">
                           <field name="prescriptionlines_id">
                             <tree>
-                              
+
                                 <field name="medicine"/>
                                 <field name="dose"/>
                                 <field name="units"/>
                                 <field name="days"/>
                                 <field name="Period"/>
-                            </field>
-                        </tree>
+                                
+                            </tree>
+                        </field>
                     </page>
 
                 </notebook>

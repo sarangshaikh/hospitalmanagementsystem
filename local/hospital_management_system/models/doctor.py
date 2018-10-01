@@ -18,4 +18,4 @@ class Doctor(models.Model):
 	licence_id= fields.Char(string="Licence_Id")
 
 
-    
+    			

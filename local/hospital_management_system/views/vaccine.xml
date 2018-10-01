@@ -7,12 +7,17 @@
             <field name="arch" type="xml">
                 <form string="vaccine Form">
                     <sheet>
-                        <group string="Group 1">
-                            <field name="name"/>
-                            <field name="partner_id"/>
-      
-                        </group>
-                       
+                        <group>
+                            <group >
+                                <field name="name"/>
+                                <field name="vaccine_name"/>
+                                <field name="patient_name"/>
+                            </group>
+                            <group>
+                              <field name="dose"/>
+                              <field name="appointment_date"/>
+                          </group>
+                      </group>
                       <!--  <group string="Group 2">
                             <field name="building_id"/>
                             <field name="ward_id"/>

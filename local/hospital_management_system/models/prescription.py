@@ -4,6 +4,8 @@ class Prescription(models.Model):
 	_name = 'hospitalmanagementsystem.prescription'
 	prescriptionlines_id=fields.One2many('hospitalmanagementsystem.prescriptionlines','prescription_id',string="PrescriptionLines")
 
+# _('New')
+
 	name = fields.Char(string='Prescription Id', index=True,
 		default=lambda self: _('New'))
 
@@ -16,7 +18,7 @@ class Prescription(models.Model):
 	@api.model
 	def create(self, vals):
 		if vals.get('name', _('New')) == _('New'):
-			vals['name'] = self.env['ir.sequence'].next_by_code('hospitalmanagementsystem.prescription') or _('New')
+			vals['name'] = self.env['ir.sequence'].next_by_code('hospitalmanagementsystem.prescription') or '/'
 			return super(Prescription, self).create(vals)
 
 
@@ -29,5 +31,4 @@ class PrescriptionLines(models.Model):
 	units=fields.Char(string="Units")
 	days=fields.Integer(string="Days")
 	Period=fields.Date(string="Period")
-
-
+	out_patient_lines=fields.Many2one('hospitalmanagementsystem.prescription',string="Out_patient_lines")

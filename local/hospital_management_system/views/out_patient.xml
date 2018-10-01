@@ -38,18 +38,25 @@
                         <notebook>
 
                             <page string="Personal Information">
-                                <field name="out_pat_lines" >
-                                    <tree string="Out Patient Lines" editable="bottom">
+                                <field name="out_pat_lines" editable="bottom">
+                         <!--            <tree string="Out Patient Lines" editable="bottom"> -->
                                        <!--  <field name=" name"/> -->
-                                       <field name="contact_no"/>
-                                       <field name="name"/>
-                                       <field name="address"/>
-                                    </tree>
+                                      <!--  <field name="contact_no"/>
+                                   
+                                       <field name="address"/> -->
+                                  <!--   </tree> -->
                                 </field>
                             </page>
 
+                            <page string="Contact">
+                            </page>
+
+
                             <page string="Medicines">
-                                <field name="description_id"/>
+                                <field name="prescription_lines_id" editable="bottom">
+          <!--                     <field name="prescription"> -->
+        
+                                </field>
                             </page>
 
                             <page string="Lab Test">

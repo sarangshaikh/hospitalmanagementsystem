@@ -3,7 +3,7 @@
 
       <record model="ir.ui.view" id="vaccine_form_view">
             <field name="name">vaccine.form</field>
-            <field name="model">hospitalmanagementsystem.vaccine</field>
+            <field name="model">hospitalmanagement.vaccine</field>
             <field name="arch" type="xml">
                 <form string="vaccine Form">
                     <sheet>
@@ -32,7 +32,7 @@
 
         <record model="ir.ui.view" id="vaccine_tree_view">
             <field name="name">vaccine.tree</field>
-            <field name="model">hospitalmanagementsystem.vaccine</field>
+            <field name="model">hospitalmanagement.vaccine</field>
             <field name="arch" type="xml">
                 <tree string="vaccine Tree">
                     <field name="name"/>
@@ -44,7 +44,7 @@
     
         <record model="ir.actions.act_window" id="vaccine_list_action">
             <field name="name">Vaccines</field>
-            <field name="res_model">hospitalmanagementsystem.vaccine</field>
+            <field name="res_model">hospitalmanagement.vaccine</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
        

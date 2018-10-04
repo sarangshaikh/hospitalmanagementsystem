@@ -2,18 +2,20 @@
 <odoo>
         <record model="ir.ui.view" id="outpatient_form_view">
             <field name="name">outpatient.form</field>
-            <field name="model">hospitalmanagementsystem.outpatient</field>
+            <field name="model">hospitalmanagement.outpatient</field>
             <field name="arch" type="xml">
                 <form string="outpatient Form">
                     <sheet>
-
+                       <!--  <header>
+                           <button name="data_transfer" string="Send Data" type="object"/>
+                        </header> -->
                         <div>
                             <field name="image" widget='image' class="oe_avatar"/>
-                             <span>
+                          
                              <h1>
                                 <field name="name" string="Patient Name" />
                             </h1>
-                            </span>
+                          
                         </div>
                         <group>
                             <group>
@@ -25,7 +27,7 @@
                             </group>
 
                             <group>
-                                <field name="maritial_id"/>
+                                <field name="marital_id"/>
                                 <field name="rh_id"/>
                                 <field name="doctor_name"/>
                             </group>
@@ -38,13 +40,12 @@
                         <notebook>
 
                             <page string="Personal Information">
-                                <field name="out_pat_lines" editable="bottom">
-                         <!--            <tree string="Out Patient Lines" editable="bottom"> -->
-                                       <!--  <field name=" name"/> -->
-                                      <!--  <field name="contact_no"/>
+                                <field name="out_pat_lines">
+                                    <tree string="Out Patient Lines" editable="bottom">
+                                       <field name="contact_no"/>
                                    
-                                       <field name="address"/> -->
-                                  <!--   </tree> -->
+                                       <field name="address"/>
+                                    </tree>
                                 </field>
                             </page>
 
@@ -53,11 +54,19 @@
 
 
                             <page string="Medicines">
-                                <field name="prescription_lines_id" editable="bottom">
-          <!--                     <field name="prescription"> -->
-        
+                                <field name="prescription_line_rel">
+                                    <tree string="Medicine" editable="bottom">
+                                        <field name="prescrip_name" invisible="1"/>
+                                        <field name="name"/>
+                                        <field name="new_dose"/>
+                                        <field name="new_units"/>
+                                        <field name="new_days"/>
+                                        <field name="new_period"/>
+                                    </tree>
                                 </field>
+
                             </page>
+
 
                             <page string="Lab Test">
                                 <field name="description_id"/>
@@ -82,7 +91,7 @@
 
         <record model="ir.ui.view" id="outpatient_tree_view">
             <field name="name">outpatient.tree</field>
-            <field name="model">hospitalmanagementsystem.outpatient</field>
+            <field name="model">hospitalmanagement.outpatient</field>
             <field name="arch" type="xml">
                 <tree string="Out Patient Tree">
                     <field name="name"/>
@@ -98,7 +107,7 @@
     
         <record model="ir.actions.act_window" id="outpatient_list_action">
             <field name="name">OutPatients</field>
-            <field name="res_model">hospitalmanagementsystem.outpatient</field>
+            <field name="res_model">hospitalmanagement.outpatient</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
        

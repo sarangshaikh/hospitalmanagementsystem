@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+      <record model="ir.ui.view" id="departments_form_view">
+            <field name="name">departments.form</field>
+            <field name="model">hospitalmanagement.departments</field>
+            <field name="arch" type="xml">
+                <form string="departments Form">
+                    <sheet>
+                        <h1>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                        </h1>
+                        <group>
+                            <group >
+                                <!-- <field name="department_id"/> -->
+                                <field name="department_name"/>
+                                
+                            </group>
+                            <group>
+                              <field name="building_name"/>
+                              <field name="floor_id"/>
+                          </group>
+                      </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="departments_tree_view">
+            <field name="name">departments.tree</field>
+            <field name="model">hospitalmanagement.departments</field>
+            <field name="arch" type="xml">
+                <tree string="departments Tree">
+                    <!-- <field name="department_id"/> -->
+                    <field name="name"/>
+                    <field name="department_name"/>
+                  
+                </tree>
+            </field>
+            </record>
+
+
+
+            <record id="inpatient_seq" model="ir.sequence">
+                <field name="name">Departments</field>
+                <field name="code">hospitalmanagement.departments</field>
+                <field name="prefix">DEPT#</field>
+                <field name="padding">3</field>
+             <!--    <field name="number_next">000</field> -->
+            </record>
+
+    
+        <record model="ir.actions.act_window" id="departments_list_action">
+            <field name="name">Departments</field>
+            <field name="res_model">hospitalmanagement.departments</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+       
+        </record>
+
+       
+
+  
+
+        <menuitem id="departments_menu" name="Departments" parent="doctor_appointment_menu" action="departments_list_action"/>
+   
+
+
+</odoo>

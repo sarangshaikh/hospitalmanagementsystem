@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+      <record model="ir.ui.view" id="bed_form_view">
+            <field name="name">bed.form</field>
+            <field name="model">hospitalmanagement.bed</field>
+            <field name="arch" type="xml">
+                <form string="Bed Management Form">
+                    <sheet>
+                        <div>
+
+                            <h1>
+                                <field name="name" string="Bed Code" />
+                               
+                            </h1>
+                        </div>
+
+                    <group>
+
+                          <group>
+                            <field name="building_id"/>
+                            <field name="ward"/>
+                            <field name="charges"/>
+                          </group>
+                        <group>
+                            <field name="bed_type"/>
+                            <field name="status"/>
+                        </group>
+
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="bed_tree_view">
+            <field name="name">bed.tree</field>
+            <field name="model">hospitalmanagement.bed</field>
+            <field name="arch" type="xml">
+                <tree string="vaccine Tree" 
+                    decoration-danger="status=='notavailable'" 
+                    decoration-info="status=='free'" 
+                    decoration-primary="status=='reserved'"
+                    decoration-muted="status=='occupied'" >
+                    <field name="name"/>
+                    <field name="building_id"/>
+                    <field name="ward"/>
+                    <field name="charges"/>
+                    <field name="bed_type"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+    
+        <record model="ir.actions.act_window" id="bed_management_list_action">
+            <field name="name">Bed Management</field>
+            <field name="res_model">hospitalmanagement.bed</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+       
+        </record>
+
+       
+
+        <menuitem id="hospital_building_management_menu" name="Hospital Building Management" parent="main_hospital_management_system_menu"/>
+
+
+        <menuitem id="bed_management_menu" name="Bed Management" parent="hospital_building_management_menu" action="bed_management_list_action"/>
+
+
+
+</odoo>

@@ -1,50 +1,87 @@
-from odoo import models, fields
+from odoo import models, fields,api
 
 
 class OutPatient(models.Model):
-    _name = 'hospitalmanagementsystem.outpatient'
+    _name = 'hospitalmanagement.outpatient'
 
-    out_pat_lines=fields.One2many('hospitalmanagementsystem.outpatientlines',
+    out_pat_lines=fields.One2many('hospitalmanagement.outpatientlines',
         'out_pat_id',string="Out Patient Lines")
      # out_pat_lines=fields.One2many('res.partner',related="name.child_id",string="Out Patient Lines")
+
+    prescription_line_rel=fields.One2many('hospitalmanagement.lines.rel','outpat_prescrip_id',string="prescription rel")
 
 
     image = fields.Binary("Image", attachment=True,
       help="This field holds the image used as avatar for \
       this contact, limited to 1024x1024px",)
+
     name=fields.Many2one('res.partner',string="Patient Name")    
 
     birth_date=fields.Date(string="Date Of Birth")
-    blood_type=fields.Char(string="Blood Type")
-    gender=fields.Char()
-    responsible_id=fields.Char(string="Responsible")
-    maritial_id=fields.Char(string="Martial Status")
-    rh_id=fields.Char(string="Rh")
-    doctor_name=fields.Many2one('hospitalmanagementsystem.doctor',string="Doctor Name")
-
-    # contact=field.Many2one('res.partner',related="name.child_id",string="Contacs")
-    description_id=fields.Char(string="Description")
-
+    
+    blood_type=fields.Selection([('a','A'),
+     ('b','B'),('o','O')],string="Admission Type")
+    
+    rh_id=fields.Selection([('-','-'),
+     ('+','+'),('notdefined','Not Defined')],string="RH")
+    
+    gender=fields.Selection([('male','Male'),
+     ('female','Female')],string="Gender")
+    
+    responsible_id=fields.Many2one('res.users',string="Responsible")
+    
+    marital_id=fields.Selection([('single','Single'),
+     ('married','Married'),('divorced','Divorced')],string="marital Status")
 
     
-    prescription_lines_id=fields.One2many('hospitalmanagementsystem.prescriptionlines','out_patient_lines',string="medicine")
-       
+    doctor_name=fields.Many2one('hospitalmanagement.doctor',string="Doctor Name")
 
-    # Prescription=fields.Char(string="Prescription")
+    description_id=fields.Text(string="Description")   
 
-    # @api.onchange('name')
-    # def _onchange_patient(self):
-    #     if self.name:
-    #         self.prescription=self.prescription_lines_id.out_patient_lines
+    #Sql constraint for unique name of patient 
+    _sql_constraints = ('name_unique','UNIQUE(name)',"Out patient must be unique"),
+
+
 
 
 class OutPatientLines(models.Model):
 
-    _name = 'hospitalmanagementsystem.outpatientlines'
+    _name = 'hospitalmanagement.outpatientlines'
 
-    out_pat_id= fields.Many2one('hospitalmanagementsystem.outpatient',
+    out_pat_id= fields.Many2one('hospitalmanagement.outpatient',
         string="Out Patient Id")
 
 
     contact_no=fields.Integer(string="Contact No")
     address=fields.Char(string="Address")
+
+
+
+
+
+
+class Prescription_lines_rel(models.Model):
+    _name='hospitalmanagement.lines.rel'
+
+    #Relation  with outpatient 
+    outpat_prescrip_id=fields.Many2one('hospitalmanagement.outpatient',string="Prescription in outpatient")
+
+    name=fields.Char(string="Name",store=True)
+    new_dose=fields.Float(string="Dose",store = True)
+    new_units=fields.Char(string="Units",store=True)
+    new_days=fields.Char(string="Days",store=True)
+    new_period=fields.Date(string="Period",store=True)
+
+
+    #relation with name of Out patient
+    prescrip_name=fields.Many2one(related="outpat_prescrip_id.name", string="Prescription Patient")
+
+
+
+
+
+
+
+
+
+

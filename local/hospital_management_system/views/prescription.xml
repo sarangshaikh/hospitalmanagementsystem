@@ -2,7 +2,7 @@
 <odoo>
         <record model="ir.ui.view" id="prescription_form_view">
             <field name="name">prescription.form</field>
-            <field name="model">hospitalmanagementsystem.prescription</field>
+            <field name="model">hospitalmanagement.prescription</field>
             <field name="arch" type="xml">
                 <form string="prescription Form">
                     <sheet> 
@@ -15,7 +15,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="partner_id"/>
+                            <field name="patient_name"/>
                             <field name="doctor_id"/>
                         </group>
 
@@ -27,13 +27,15 @@
                     <notebook>
                         <page string="Prescription Lines">
                           <field name="prescriptionlines_id">
-                            <tree>
-
-                                <field name="medicine"/>
-                                <field name="dose"/>
-                                <field name="units"/>
-                                <field name="days"/>
-                                <field name="Period"/>
+                            <tree editable="bottom">
+                                
+                               
+                                <field name="prescrip_patient" invisible="1"/>
+                                <field name="medicine" force_save="1"/>
+                                <field name="dose" force_save="1"/>
+                                <field name="units" force_save="1"/>
+                                <field name="days" force_save="1"/>
+                                <field name="period" force_save="1"/>
                                 
                             </tree>
                         </field>
@@ -47,10 +49,12 @@
 
         <record model="ir.ui.view" id="prescription_tree_view">
             <field name="name">prescription.tree</field>
-            <field name="model">hospitalmanagementsystem.prescription</field>
+            <field name="model">hospitalmanagement.prescription</field>
             <field name="arch" type="xml">
                 <tree string="In Patient Tree">
                     <field name="name"/>
+                    <field name="patient_name"/>
+                 
                   
                 </tree>
             </field>
@@ -59,7 +63,7 @@
 
             <record id="prescription_seq" model="ir.sequence">
                 <field name="name">prescription</field>
-                <field name="code">hospitalmanagementsystem.prescription</field>
+                <field name="code">hospitalmanagement.prescription</field>
                 <field name="prefix">PR#</field>
                 <field name="padding">3</field>
              <!--    <field name="number_next">000</field> -->
@@ -68,7 +72,7 @@
     
         <record model="ir.actions.act_window" id="prescription_list_action">
             <field name="name">Prescription</field>
-            <field name="res_model">hospitalmanagementsystem.prescription</field>
+            <field name="res_model">hospitalmanagement.prescription</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
        

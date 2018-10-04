@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+      <record model="ir.ui.view" id="ward_form_view">
+            <field name="name">ward.form</field>
+            <field name="model">hospitalmanagement.ward</field>
+            <field name="arch" type="xml">
+                <form string="Ward Form">
+                    <sheet>
+            
+                        <div>
+                           <label string="Ward Name"/>
+                           <field name="name"/>
+                       </div>
+                 
+
+                    <group>
+
+                          <group>
+
+                            <field name="building_name"/>
+                            <field name="floor_no"/>
+                            <field name="ward_type"/>
+                                                   
+                          </group>
+
+                        <group>
+                            <field name="ac"/>
+                            <field name="tv"/>
+                            <field name="refrigerator"/>
+                            <field name="internet_access"/>
+                            <field name="telephone_access"/>
+                        </group>
+
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ward_tree_view">
+            <field name="name">ward.tree</field>
+            <field name="model">hospitalmanagement.ward</field>
+            <field name="arch" type="xml">
+                <tree string="Ward Tree">
+                    <field name="name"/>
+                    <field name="building_name"/>
+                    <field name="floor_no"/>
+                </tree>
+            </field>
+            </record>
+
+    
+        <record model="ir.actions.act_window" id="ward_list_action">
+            <field name="name">Ward</field>
+            <field name="res_model">hospitalmanagement.ward</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+       
+        </record>
+
+       
+
+  
+
+       <menuitem id="ward_management_menu" name="Ward Management" parent="hospital_building_management_menu" action="ward_list_action"/>
+
+   
+
+
+</odoo>

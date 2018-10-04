@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+      <record model="ir.ui.view" id="pharmacy_form_view">
+            <field name="name">pharmacy.form</field>
+            <field name="model">hospitalmanagement.pharmacy</field>
+            <field name="arch" type="xml">
+                <form string="Pharmacy Form">
+                    <sheet>
+                        <div>
+                            <h1>
+                                <field name="name" string="Pharmacy Name" />
+                                
+                            </h1>
+                        </div>
+
+                    <group>
+
+                          <group>
+                            <field name="address"/>
+                            <field name="phone"/>
+                       
+                          </group>
+                        <group>
+                            <field name="email_id"/>
+                            <field name="mobile"/>
+                            <!-- <field name="web"/> -->
+                        </group>
+
+                    </group>
+
+                    <notebook>
+                        <page string="Pharmacy Lines">
+                            <field name="pharmacy_lines">
+                                <tree string="Pharmacy Tree" editable="bottom">
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="page1">
+                              <field name="pharmacy_lines">
+                            <field name="pharmacy_name"/>
+                        </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+        <record model="ir.ui.view" id="pharmacy_tree_view">
+            <field name="name">pharmacy.tree</field>
+            <field name="model">hospitalmanagement.pharmacy</field>
+            <field name="arch" type="xml">
+                <tree string="Pharmacy Tree">
+                    <field name="name"/>
+                    <!-- <field name="email_id"/>
+                    <field name="phone"/> -->
+                  
+                </tree>
+            </field>
+            </record>
+
+    
+        <record model="ir.actions.act_window" id="pharmacy_list_action">
+            <field name="name">Pharmacy</field>
+            <field name="res_model">hospitalmanagement.pharmacy</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+       
+        </record>
+
+       
+
+  
+
+        <menuitem id="pharmacy_menu" name="Pharmacy" parent="hospital_building_management_menu" action="pharmacy_list_action"/>
+
+
+
+</odoo>

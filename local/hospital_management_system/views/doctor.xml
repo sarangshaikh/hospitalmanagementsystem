@@ -3,27 +3,29 @@
 
       <record model="ir.ui.view" id="doctor_form_view">
             <field name="name">doctor.form</field>
-            <field name="model">hospitalmanagementsystem.doctor</field>
+            <field name="model">hospitalmanagement.doctor</field>
             <field name="arch" type="xml">
                 <form string="doctor Form">
                     <sheet>
                         <div>
                             <field name="doc_image" widget='image' class="oe_avatar"/>
-                             
-                             <h1>
+                            <h1>
                                 <field name="name" string="Doctor Name" />
 
+                                <field name="degree" string="Degree"/>
                             </h1>
-                            <field name="degree"/>
-                            
                         </div>
 
-                        <group>
+                
+                
+
+                    <group>
 
                           <group>
+                            <field name="department"/>
                             <field name="graduation_institute"/>
                             <field name="licence_id"/>
-                        </group>
+                          </group>
                         <group>
                             <field name="consultancy_type"/>
                             <field name="consultancy_charge"/>
@@ -45,9 +47,9 @@
 
         <record model="ir.ui.view" id="doctor_tree_view">
             <field name="name">doctor.tree</field>
-            <field name="model">hospitalmanagementsystem.doctor</field>
+            <field name="model">hospitalmanagement.doctor</field>
             <field name="arch" type="xml">
-                <tree string="vaccine Tree">
+                <tree string="Doctors Tree">
                     <field name="name"/>
                   
                 </tree>
@@ -57,7 +59,7 @@
     
         <record model="ir.actions.act_window" id="doctor_list_action">
             <field name="name">Doctors</field>
-            <field name="res_model">hospitalmanagementsystem.doctor</field>
+            <field name="res_model">hospitalmanagement.doctor</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
        

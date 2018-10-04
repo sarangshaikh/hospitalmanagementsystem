@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+      <record model="ir.ui.view" id="operationroom_form_view">
+            <field name="name">operationroom.form</field>
+            <field name="model">hospitalmanagement.operationroom</field>
+            <field name="arch" type="xml">
+                <form string="doctor Form">
+                    <sheet>
+                        <div>
+                          <h1>
+                            <field name="name"/>
+
+                        </h1>
+                    </div>
+
+                    <group>
+
+                        <group>
+                            <field name="room_name"/>
+                        </group>
+                        <group>
+                            <field name="building_name"/>
+                        </group>
+
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="operationroom_tree_view">
+            <field name="name">operationroom.tree</field>
+            <field name="model">hospitalmanagement.operationroom</field>
+            <field name="arch" type="xml">
+                <tree string="vaccine Tree">
+                    <field name="name"/>
+                    <field name="room_name"/>
+                    <field name="building_name"/>
+                  
+                </tree>
+            </field>
+            </record>
+
+    
+        <record model="ir.actions.act_window" id="operationroom_list_action">
+            <field name="name">Operation Room</field>
+            <field name="res_model">hospitalmanagement.operationroom</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+       
+        </record>
+
+       
+        <menuitem id="operation_room_menu" name="Operation Room" parent="hospital_building_management_menu" action="operationroom_list_action"/>
+
+  
+
+        
+   
+
+
+</odoo>

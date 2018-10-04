@@ -3,7 +3,7 @@
 
       <record model="ir.ui.view" id="appointment_form_view">
             <field name="name">appointment.form</field>
-            <field name="model">hospitalmanagementsystem.appointment</field>
+            <field name="model">hospitalmanagement.appointment</field>
             <field name="arch" type="xml">
                 <form string="appoitment Form">
                     <sheet>
@@ -27,7 +27,7 @@
 
         <record model="ir.ui.view" id="appointment_tree_view">
             <field name="name">doctor.tree</field>
-            <field name="model">hospitalmanagementsystem.appointment</field>
+            <field name="model">hospitalmanagement.appointment</field>
             <field name="arch" type="xml">
                 <tree string="vaccine Tree">
                     <field name="name"/>
@@ -39,7 +39,7 @@
     
         <record model="ir.actions.act_window" id="appointment_list_action">
             <field name="name">Appointments</field>
-            <field name="res_model">hospitalmanagementsystem.appointment</field>
+            <field name="res_model">hospitalmanagement.appointment</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
        

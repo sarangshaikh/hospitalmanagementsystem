@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class Appointment(models.Model):
-    _name = 'hospitalmanagementsystem.appointment'
+    _name = 'hospitalmanagement.appointment'
 
 
     name = fields.Char(string="Patient Id")

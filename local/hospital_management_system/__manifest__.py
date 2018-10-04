@@ -32,6 +32,12 @@
         'views/vaccine.xml',
          'views/doctor.xml',
          'views/appointment.xml',
+         'views/bed_management.xml',
+         'views/hospital_building.xml',
+         'views/ward.xml',
+         'views/pharmacy.xml',
+         'views/operation_room.xml',
+         'views/departments.xml',
         
         
     ],

@@ -1,4 +1,4 @@
-from odoo import models, fields,api
+from odoo import models, fields,api,_
 
 
 class OutPatient(models.Model):
@@ -41,6 +41,31 @@ class OutPatient(models.Model):
     #Sql constraint for unique name of patient 
     _sql_constraints = ('name_unique','UNIQUE(name)',"Out patient must be unique"),
 
+    appointment_id=fields.Many2one('hospitalmanagement.appointment',string="Appointment ID")
+
+
+    
+    @api.depends("appointment_id")
+    def _compute_appointments(self):
+        for rec in self:
+            print(self.appointment_id)
+            rec.appointment_count=len(rec.appointment_id)
+    
+    appointment_count=fields.Integer(string="Appointments",compute="_compute_appointments")
+
+
+    @api.multi
+    def action_view_appointment(self):
+        return {
+            'name': _('Patient appointment'),
+            'view_mode': 'form',
+            'view_id': self.env.ref('hospital_management.outpatient_form_view').id,
+            'res_model': 'hospitalmanagement.appointment',
+            # 'context': "{'type':'out_invoice'}",
+            'type': 'ir.actions.act_window',
+            'res_id': self.appointment_id.id,
+        }
+
 
 
 
@@ -51,12 +76,13 @@ class OutPatientLines(models.Model):
     out_pat_id= fields.Many2one('hospitalmanagement.outpatient',
         string="Out Patient Id")
 
+    patient_name=fields.Many2one(related="out_pat_id.name", string="outlinesPatient")
 
     contact_no=fields.Integer(string="Contact No")
     address=fields.Char(string="Address")
-
-
-
+    appointment=fields.Char(string="Appointment Id")
+    doctor=fields.Char(string="Doctor")
+    price_list=fields.Char(string="Price List")
 
 
 

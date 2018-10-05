@@ -6,9 +6,33 @@
             <field name="arch" type="xml">
                 <form string="outpatient Form">
                     <sheet>
-                       <!--  <header>
-                           <button name="data_transfer" string="Send Data" type="object"/>
-                        </header> -->
+                      
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_appointment"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-calendar" attrs="{'invisible': [('appointment_count', '=', 0)]}">
+                            
+                                <field name="appointment_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                  <!-- icon="fa-archive 
+                             fa-pencil 
+                             fa-pencil-square-o
+                             fa-usd
+                             fa-truck
+                             fa-user
+                             fa-calendar
+                             fa-sign-out
+                             fa-arrows-v
+                             fa-money
+                             fa-level-down
+                             fa-files-o
+                             fa-list-alt
+                             fa-calendar-times
+                             fa-arrows-->
+
+
                         <div>
                             <field name="image" widget='image' class="oe_avatar"/>
                           
@@ -19,7 +43,8 @@
                         </div>
                         <group>
                             <group>
-
+                                <field name="appointment_id"/>
+                                <field name="appointment_count"/>
                                 <field name="birth_date"/>
                                 <field name="blood_type"/>
                                  <field name="gender"/>
@@ -42,12 +67,14 @@
                             <page string="Personal Information">
                                 <field name="out_pat_lines">
                                     <tree string="Out Patient Lines" editable="bottom">
-                                       <field name="contact_no"/>
-                                   
-                                       <field name="address"/>
-                                    </tree>
-                                </field>
-                            </page>
+                               <!--       <field name="contact_no"/> -->
+                                     <field name="appointment"/>
+                                     <field name="doctor"/>
+                                     <field name="price_list"/>
+                                     <field name="address"/>
+                                 </tree>
+                             </field>
+                         </page>
 
                             <page string="Contact">
                             </page>

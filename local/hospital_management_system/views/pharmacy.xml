@@ -9,7 +9,9 @@
                     <sheet>
                         <div>
                             <h1>
+                                <field name="pharmacy_image" widget='image' class="oe_avatar"/>
                                 <field name="name" string="Pharmacy Name" />
+                                <field name="build_name"/>
                                 
                             </h1>
                         </div>

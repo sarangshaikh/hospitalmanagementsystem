@@ -7,18 +7,18 @@
             <field name="arch" type="xml">
                 <form string="appoitment Form">
                     <sheet>
-                        <group string="Group 1">
+                        <header>
+                            <button name="send_outpatient" string="Sent to Outpatient" type="object" />
+                        </header>
+                        <group>
                             <field name="name"/>
-                            <field name="patient_app"/>
-      
+                            <field name="patient_id"/>
+                            <field name="doctor_id"/>
                         </group>
-                       
-                      <!--  <group string="Group 2">
-                            <field name="building_id"/>
-                            <field name="ward_id"/>
-                            <field name="bed_id"/>
-                            <field name="discharge_date"/>
-                       </group> -->
+                        <group>
+                            <field name="appointment_datetime"/>
+                            <field name="charges"/>
+                        </group>
                     </sheet>
                 </form>
             </field>

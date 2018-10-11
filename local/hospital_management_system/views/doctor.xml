@@ -7,6 +7,20 @@
             <field name="arch" type="xml">
                 <form string="doctor Form">
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button 
+                                name="action_view_appointment"
+                                
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-calendar" 
+                       
+                                attrs="{'invisible': [('appoint_count', '=', 0)]}"
+                                >
+
+                                <field name="appoint_count" widget="statinfo"/>
+                            </button>
+                        </div>
                         <div>
                             <field name="doc_image" widget='image' class="oe_avatar"/>
                             <h1>
@@ -22,6 +36,8 @@
                     <group>
 
                           <group>
+                            <field name="appoint_id"/>
+                            <field name="appoint_count"/>
                             <field name="department"/>
                             <field name="graduation_institute"/>
                             <field name="licence_id"/>

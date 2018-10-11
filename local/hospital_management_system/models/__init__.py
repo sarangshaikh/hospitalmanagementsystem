@@ -11,6 +11,7 @@ from . import operation_room
 from . import pharmacy
 from . import ward
 from . import departments
-
-
+from . import surgeries
+from . import evaluation
+from . import labtest
 

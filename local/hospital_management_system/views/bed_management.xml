@@ -6,14 +6,29 @@
             <field name="model">hospitalmanagement.bed</field>
             <field name="arch" type="xml">
                 <form string="Bed Management Form">
-                    <sheet>
-                        <div>
+                 <header>
+                     <button name="action_free" string="Free" type="object" class="oe_highlight"/>   <!-- attrs="{'invisible': [('status', 'not in', ['reserved','occupied','notavailable'])]}" --> 
 
-                            <h1>
-                                <field name="name" string="Bed Code" />
-                               
-                            </h1>
-                        </div>
+                     <button name="action_reserved" string="Reserved" type="object" class="oe_highlight" />
+                    <!-- attrs="{'invisible': [('status', 'not in', ['occupied','notavailable'])]}"  -->
+                     <button name="action_occupied" string="Occupied" type="object" class="oe_highlight" />
+                     <!-- attrs="{'invisible': [('status', 'not in', ['reserved','notavailable'])]}" --> 
+
+                     <button name="action_notavailable" string="Not Available" type="object" class="oe_highlight"  /> 
+                      <!-- attrs="{'invisible': [('status', 'not in', ['reserved','occupied'])]}"
+                       --> 
+
+                     <field name="status" widget="statusbar" statusbar_visible="free,reserved,occupied,notavailable"/>
+
+                 </header>
+                 <sheet>
+                    <div>
+
+                        <h1>
+                            <field name="name" string="Bed Code" />
+                        </h1>
+
+                    </div>
 
                     <group>
 
@@ -24,7 +39,7 @@
                           </group>
                         <group>
                             <field name="bed_type"/>
-                            <field name="status"/>
+                           <!--  <field name="status"/> -->
                         </group>
 
                     </group>

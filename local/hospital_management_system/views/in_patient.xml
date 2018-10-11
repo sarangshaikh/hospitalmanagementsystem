@@ -7,11 +7,14 @@
                 <form string="inpatient Form">
                     <sheet>
 
-                        <div class="oe_title" string="Patient Name">
+                        <div >
                             <h1>
                                 <field name="name" class="oe_inline" readonly="1"/>
                             </h1>
-                            <field name="inpatient_name" class="oe_inline"/>
+                            <h1>
+                                <field name="inpatient_name" class="oe_inline"/>
+                            </h1>
+                            
                         </div>
                         <group>
                             <group>
@@ -62,16 +65,16 @@
                 <field name="code">hospitalmanagement.inpatient</field>
                 <field name="prefix">IN#</field>
                 <field name="padding">3</field>
-             <!--    <field name="number_next">000</field> -->
             </record>
 
 
         <!-- top level menu: no parent -->
         <menuitem id="main_hospital_management_system_menu" name="Hospital Management System"/>
       
-        <menuitem id="patient_menu" name="Patients" parent="main_hospital_management_system_menu"/>
+        <menuitem id="patient_menu" name="Patients" parent="main_hospital_management_system_menu"
+            sequence="1" />/>
        
-        <menuitem id="inpatient_menu" name="In Patients" parent="patient_menu" action="inpatient_list_action"/>
+        <menuitem id="inpatient_menu" name="In Patients" parent="patient_menu" action="inpatient_list_action"  sequence="2"/>
        
 
 

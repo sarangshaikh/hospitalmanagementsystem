@@ -30,16 +30,17 @@
         'views/out_patient.xml',
         'views/prescription.xml',
         'views/vaccine.xml',
-         'views/doctor.xml',
-         'views/appointment.xml',
-         'views/bed_management.xml',
-         'views/hospital_building.xml',
-         'views/ward.xml',
-         'views/pharmacy.xml',
-         'views/operation_room.xml',
-         'views/departments.xml',
-        
-        
+        'views/doctor.xml',
+        'views/appointment.xml',
+        'views/bed_management.xml',
+        'views/hospital_building.xml',
+        'views/ward.xml',
+        'views/pharmacy.xml',
+        'views/operation_room.xml',
+        'views/departments.xml',
+        'views/surgeries.xml',
+        'views/evaluation.xml',
+        'views/labtest.xml',
     ],
 
 }

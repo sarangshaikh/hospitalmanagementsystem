@@ -5,6 +5,14 @@
             <field name="model">hospitalmanagement.prescription</field>
             <field name="arch" type="xml">
                 <form string="prescription Form">
+                    <header>
+                    <!--  <button name="_get_order_lines" string="Sent to Outpatient" type="object" /> -->
+            
+                    <button name="action_invoice" string="Invoice" type="object" class="oe_highlight"/>
+                    <button name="action_pharmacy" string="Set to Pharmacy" type="object" class="oe_highlight" />
+                             
+                            <field name="states" widget="statusbar" statusbar_visible="draft,invoice,send"/>
+                        </header>
                     <sheet> 
                      <div class="oe_title">
                         <h1>
@@ -15,21 +23,21 @@
                     </div>
                     <group>
                         <group>
-                            <field name="patient_name"/>
+                            <field name="patient_names"/>
                             <field name="doctor_id"/>
                         </group>
 
                         <group>
-                            <field name="pharmacy_id"/>
+                            <field name="pharmacy_names"/>
                             <field name="prescription_date"/>
                         </group> 
                     </group>
                     <notebook>
-                        <page string="Prescription Lines">
+                        <!-- <page string="Prescription Lines">
                           <field name="prescriptionlines_id">
                             <tree editable="bottom">
-                                
-                               
+
+
                                 <field name="prescrip_patient" invisible="1"/>
                                 <field name="medicine" force_save="1"/>
                                 <field name="dose" force_save="1"/>
@@ -39,27 +47,39 @@
                                 
                             </tree>
                         </field>
-                    </page>
+                    </page> -->
+                    <page string="Medicine">
+                      <field name="prescription_line">
+                          <tree string="Medicine" editable="bottom">
+                            <field name="new_medicine"/>
+                            <field name="new_dose" />
+                            <field name="new_units" />
+                            <field name="new_days" />
+                            <field name="new_period"/>
+                            
+                        </tree>
+                    </field>
+                </page>
 
-                </notebook>
-                </sheet>
-            </form>
-            </field>
-        </record>
+            </notebook>
+        </sheet>
+    </form>
+</field>
+</record>
 
-        <record model="ir.ui.view" id="prescription_tree_view">
+        <record model="ir.ui.view" id="hospital_management_system.prescription_tree_view">
             <field name="name">prescription.tree</field>
             <field name="model">hospitalmanagement.prescription</field>
             <field name="arch" type="xml">
                 <tree string="In Patient Tree">
                     <field name="name"/>
-                    <field name="patient_name"/>
-                 
-                  
+                    <field name="patient_names"/>
+                    <field name="pharmacy_names"/>
+
                 </tree>
             </field>
-            </record>
-            
+        </record>
+
 
             <record id="prescription_seq" model="ir.sequence">
                 <field name="name">prescription</field>

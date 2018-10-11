@@ -6,13 +6,16 @@
             <field name="model">hospitalmanagement.operationroom</field>
             <field name="arch" type="xml">
                 <form string="doctor Form">
-                    <sheet>
-                        <header>
-                            <button string="Mark reserved" type="object" class="oe_highlight" invisible="1"/>
-                            <button string="Mark Occupied" type="object" class="oe_highlight" />
-                            <button string="Mark Available" type="object" class="oe_highlight"/>
-                             <field name="state" widget="statusbar" statusbar_visible="reserved,occupied,available"/>
+                   <header>
+
+                    <button name="action_available"  string="Mark Available" type="object" class="oe_highlight"/>
+                    <button name="action_reserved" string="Mark reserved" type="object" class="oe_highlight"/>
+                    <button name="action_occupied" string="Mark Occupied" type="object" class="oe_highlight" />
+                             
+                            <field name="states" widget="statusbar" statusbar_visible="reserved,occupied,available"/>
                         </header>
+                    <sheet>
+                        
                         <div>
                           <h1>
                             <field name="name" class="oe_inline" readonly="1"/>
@@ -28,6 +31,8 @@
                         </group>
                         <group>
                             <field name="building_name"/>
+                  
+                        
                         </group>
 
                     </group>
@@ -41,14 +46,19 @@
             <field name="name">operationroom.tree</field>
             <field name="model">hospitalmanagement.operationroom</field>
             <field name="arch" type="xml">
-                <tree string="vaccine Tree">
+                <tree string="Operation Room Tree" 
+                    decoration-danger="states=='reserved'" 
+                    decoration-info="states=='available'" 
+                    decoration-primary="states=='occupied'">
+                   
                     <field name="name"/>
                     <field name="room_name"/>
                     <field name="building_name"/>
+                    <field name="states"/>
                   
                 </tree>
             </field>
-            </record>
+            </record>s
 
     
         <record model="ir.actions.act_window" id="operationroom_list_action">

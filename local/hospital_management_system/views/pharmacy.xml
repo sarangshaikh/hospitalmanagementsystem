@@ -10,39 +10,59 @@
                         <div>
                             <h1>
                                 <field name="pharmacy_image" widget='image' class="oe_avatar"/>
-                                <field name="name" string="Pharmacy Name" />
-                                <field name="build_name"/>
-                                
+                                <field name="pharmacy_name" string="Pharmacy Name" />
                             </h1>
                         </div>
 
-                    <group>
+                        <group>
 
                           <group>
+                            <field name="build_name"/>
                             <field name="address"/>
-                            <field name="phone"/>
-                       
-                          </group>
+                            <field name="phone_no"/>
+      
+                            
+                            
+                        </group>
                         <group>
                             <field name="email_id"/>
-                            <field name="mobile"/>
-                            <!-- <field name="web"/> -->
+                            <field name="mobile_no"/>
+                            <field name="web"/>
+                            
                         </group>
 
                     </group>
 
                     <notebook>
-                        <page string="Pharmacy Lines">
+                         <page string="Medicine">
+                                <field name="pharmacy_lines">
+                                    <tree string="Medicine" editable="bottom">
+                                        <field name="name"/>
+                                        <field name="medicines"/>
+                                        <field name="doctor_id"/>
+                                        <field name="doses"/>
+                                        <field name="unit"/>
+                                        <field name="day"/>
+                                        <field name="period"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+                      <!--   <page string="Prescription Lines">
                             <field name="pharmacy_lines">
                                 <tree string="Pharmacy Tree" editable="bottom">
-                                    <field name="name"/>
-                                </tree>
+                                    <field name="medicine"/>
+                                    <field name="patient_name"/>
+                                    <field name="dose"/>
+                                    <field name="units"/>
+                                    <field name="days"/>
+                                    <field name="period"/>
+                                    <field name="phar_name"/> -->
+                          <!--       </tree>
                             </field>
-                        </page>
+                        </page>  -->
                         <page string="page1">
-                              <field name="pharmacy_lines">
-                            <field name="pharmacy_name"/>
-                        </field>
+                          
                         </page>
                     </notebook>
                 </sheet>
@@ -56,7 +76,9 @@
             <field name="model">hospitalmanagement.pharmacy</field>
             <field name="arch" type="xml">
                 <tree string="Pharmacy Tree">
-                    <field name="name"/>
+                    <field name="pharmacy_name"/>
+                    <field name="build_name"/>
+                    
                     <!-- <field name="email_id"/>
                     <field name="phone"/> -->
                   

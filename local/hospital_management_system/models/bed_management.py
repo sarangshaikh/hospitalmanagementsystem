@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields,api
 
 
 class Bed(models.Model):
@@ -22,3 +22,22 @@ class Bed(models.Model):
 		('notavailable','Not Available'),
 		],string="Bed Status")
   
+
+
+	@api.multi
+	def action_free(self):
+		self.status ="free"
+
+	@api.multi
+	def action_reserved(self):
+		self.status ="reserved"
+
+	@api.multi
+	def action_occupied(self):
+		self.status ="occupied"
+
+	@api.multi
+	def action_notavailable(self):
+		self.status ="notavailable"
+
+

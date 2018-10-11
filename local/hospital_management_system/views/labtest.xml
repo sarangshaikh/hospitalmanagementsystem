@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+      <record model="ir.ui.view" id="evaluation_form_view">
+            <field name="name">labtest.form</field>
+            <field name="model">hospitalmanagement.labtest</field>
+            <field name="arch" type="xml">
+                <form string="labtest Form">
+                    <sheet>
+            
+                        <div >
+                            <h1>
+                                <field name="name" class="oe_inline" readonly="1"/>
+                            </h1>
+                        </div>
+
+                    <group>
+
+                          <group>
+                            <!-- <field name="appointment"/>
+                            <field name="patient_name"/>
+                            <field name="doctor_name"/>
+                            <field name="evaluation_start_date"/>
+ -->
+                                                   
+                          </group>
+
+                        <group>
+                           <!--  <field name="evaluation_end_date"/>
+                            <field name="evaluation_type"/>
+                            <field name="appointment_date"/> -->
+                        </group>
+
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="labtest_tree_view">
+            <field name="name">labtest.tree</field>
+            <field name="model">hospitalmanagement.labtest</field>
+            <field name="arch" type="xml">
+                <tree string="Lab Test Tree">
+                   <!--  <field name="patient_name"/>
+                    <field name="doctor_name"/>
+                    <field name="evaluation_start_date"/>
+                    <field name="evaluation_end_date"/>
+                    <field name="evaluation_type"/>
+                    <field name="appointment_date"/> -->
+                </tree>
+            </field>
+            </record>
+
+             <record id="labtest_seq" model="ir.sequence">
+                <field name="name">Lab Test</field>
+                <field name="code">hospitalmanagement.labtest</field>
+                <field name="prefix">LT#</field>
+                <field name="padding">3</field>
+            </record>
+
+
+    
+        <record model="ir.actions.act_window" id="labtest_list_action">
+            <field name="name">Lab Test</field>
+            <field name="res_model">hospitalmanagement.labtest</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+       
+        </record>
+
+       
+        <menuitem id="laboratory_menu" name="Laboratory" parent="main_hospital_management_system_menu" />
+
+
+        <menuitem id="labtest_menu" name="Lab Test" parent="laboratory_menu" action="labtest_list_action"/>
+
+   
+
+
+</odoo>

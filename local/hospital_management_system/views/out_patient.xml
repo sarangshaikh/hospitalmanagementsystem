@@ -5,16 +5,41 @@
             <field name="model">hospitalmanagement.outpatient</field>
             <field name="arch" type="xml">
                 <form string="outpatient Form">
+                   <!--  <header>
+                        <button name="compute_appointments" string="Count Appointments" type="object"/>
+                    </header> -->
                     <sheet>
-                      
+
                         <div class="oe_button_box" name="button_box">
-                            <button name="action_view_appointment"
+                            <!-- Appointment Button-->
+                            <button 
+                                name="action_view_appointment"
+                                
                                 type="object"
                                 class="oe_stat_button"
-                                icon="fa-calendar" attrs="{'invisible': [('appointment_count', '=', 0)]}">
-                            
+                                icon="fa-calendar" 
+                       
+                                attrs="{'invisible': [('appointment_count', '=', 0)]}"
+                                >
+
                                 <field name="appointment_count" widget="statinfo"/>
                             </button>
+
+                            <!-- Prescription Button-->
+                              <button 
+                                name="action_view_prescription"
+                                
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-list-alt" 
+                       
+                                attrs="{'invisible': [('prescription_count', '=', 0)]}"
+                                >
+
+                                <field name="prescription_count" string="Prescription"
+                                    widget="statinfo"/>
+                            </button>
+
                         </div>
                   <!-- icon="fa-archive 
                              fa-pencil 
@@ -52,6 +77,8 @@
                             </group>
 
                             <group>
+                                <field name="prescription_id"/>
+                                <field name="prescription_count"/>
                                 <field name="marital_id"/>
                                 <field name="rh_id"/>
                                 <field name="doctor_name"/>
@@ -67,7 +94,6 @@
                             <page string="Personal Information">
                                 <field name="out_pat_lines">
                                     <tree string="Out Patient Lines" editable="bottom">
-                               <!--       <field name="contact_no"/> -->
                                      <field name="appointment"/>
                                      <field name="doctor"/>
                                      <field name="price_list"/>
@@ -76,7 +102,56 @@
                              </field>
                          </page>
 
-                            <page string="Contact">
+                         <page string="Vaccine">
+                           <field name="out_vaccineline">
+                            <tree string="Out Patient Vaccine Lines" editable="bottom">
+                              <field name="name"/>
+                              <field name="vaccine_name"/>
+                              <field name="patient_name"/>
+                              <field name="dose"/>
+                              <field name="appointment_date"/>
+                            </tree>
+                          </field>
+                        </page>
+
+
+                            <page string="Medicine">
+                                <field name="out_prescrip_id">
+                                    <tree string="Medicine" editable="bottom">
+                                        <field name="medicine" readonly="1"/>
+                                        <field name="name" readonly="1"/>
+                                        <field name="doctor_name" readonly="1"/>
+                                        <field name="dose" readonly="1"/>
+                                        <field name="units" readonly="1"/>
+                                        <field name="days" readonly="1"/>
+                                        <field name="period" readonly="1"/>
+                                    </tree>
+                                </field>
+
+                            </page>
+
+
+
+                            <page string="Lab Test">
+                                <field name="description_id"/>
+                            </page>
+
+                            <page string="Surgeries">
+                                <field name="description_id"/>
+                            </page>
+
+                            <page string="Evaluation">
+                                <field name="out_evaluationline">
+                                <tree string="Evaluation" editable="bottom">
+                                 <field name="patient"/>
+                                 <field name="doctor_name"/>
+                                 <field name="evaluation_start_date"/>
+                                 <field name="evaluation_end_date"/>
+                                 <field name="evaluation_type"/>
+                                 <field name="appointment_date"/>
+                                 <field name="appointment"/>
+                                </tree>
+                              </field>
                             </page>
 
 
@@ -93,21 +168,6 @@
                                 </field>
 
                             </page>
-
-
-                            <page string="Lab Test">
-                                <field name="description_id"/>
-                            </page>
-
-                            <page string="Surgeries">
-                                <field name="description_id"/>
-                            </page>
-
-                            <page string="Evaluation">
-                                <field name="description_id"/>
-                            </page>
-
-
 
 
                         </notebook>
@@ -131,6 +191,14 @@
             </field>
             </record>
 
+
+<!--    
+     <header>
+                         <button name="state_draft" string="Draft" type="object" invisible="1"/>
+                         <button name="state_confirm" string="Confirm" type="object"  attrs="{'invisible': [('states', 'not in', ['draft'])]}" />
+                         <button name="state_cancel" string="Cancel" type="object"  attrs="{'invisible': [('states', 'not in', ['draft'])]}"/>
+                          <field name="states" widget="statusbar" />
+                    </header> -->
     
         <record model="ir.actions.act_window" id="outpatient_list_action">
             <field name="name">OutPatients</field>

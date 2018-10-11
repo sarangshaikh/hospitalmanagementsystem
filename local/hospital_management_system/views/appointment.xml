@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-      <record model="ir.ui.view" id="appointment_form_view">
+      <record model="ir.ui.view" id="hospital_management_system.appointment_form_view">
             <field name="name">appointment.form</field>
             <field name="model">hospitalmanagement.appointment</field>
             <field name="arch" type="xml">
@@ -10,14 +10,19 @@
                         <header>
                             <button name="send_outpatient" string="Sent to Outpatient" type="object" />
                         </header>
+                        <h1>
+                            <field name="name" class="oe_inline" readonly="1"/>
+                        </h1>
                         <group>
-                            <field name="name"/>
-                            <field name="patient_id"/>
-                            <field name="doctor_id"/>
-                        </group>
-                        <group>
-                            <field name="appointment_datetime"/>
-                            <field name="charges"/>
+                            <group>
+                                <field name="patient_id"/>
+                                <field name="appointment_start_date"/>
+                                <field name="doctor_id"/>
+                            </group>
+                            <group>
+                                <field name="appointment_end_date"/>
+                                <field name="charges"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -31,19 +36,39 @@
             <field name="arch" type="xml">
                 <tree string="vaccine Tree">
                     <field name="name"/>
+                    <field name="patient_id"/>
                   
                 </tree>
             </field>
             </record>
 
-    
+
+ <!-- calendar view -->
+     <record model="ir.ui.view" id="hospital_management_system.appointment_calendar_view">
+        <field name="name">appointment.calendar</field>
+        <field name="model">hospitalmanagement.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointment Calendar" date_start="appointment_start_date" date_stop="appointment_end_date" color="doctor_id">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+
+    <record id="appointment_seq" model="ir.sequence">
+        <field name="name">Appointment</field>
+        <field name="code">hospitalmanagement.appointment</field>
+        <field name="prefix">AP#</field>
+        <field name="padding">3</field>
+    </record>
         <record model="ir.actions.act_window" id="appointment_list_action">
             <field name="name">Appointments</field>
             <field name="res_model">hospitalmanagement.appointment</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
        
         </record>
+        
 
        
 
